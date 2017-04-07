@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Gmail Extension",
+  "version": "0.0.0",
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/mail/u/0/*"],
+      "include_globs" : ["*#settings*"],
+      "js": ["jquery-2.1.3.min.js", "script.js"],
+      "css": ["basic.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    "jquery-2.1.3.min.js"
+  ]
+}
