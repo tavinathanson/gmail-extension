@@ -1,32 +1,18 @@
-function listener() {
-  if (window.location.hash == "#settings/filters" && lastHash !== "#settings/filters") {
-    var elements = $("tr:contains('tavi')");
+function waitFunction() {
+  if (window.location.hash == "#settings/filters") {
+    var elements = $("tr:contains('delta')");
     elements.each(function(index, element) {
       element.style.display = "none";
     });
-  }
 
-  lastHash = window.location.hash;
+    setTimeout(waitFunction, 10);
+  }
+  else if (window.location.hash.indexOf("#settings") !== -1) {
+    setTimeout(waitFunction, 10);
+  }
+  else {
+    setTimeout(waitFunction, 1000);
+  }
 }
 
-$(document).ready(function() {
-  setTimeout(
-    function() {
-      if (window.location.hash == "#settings/filters") {
-        var elements = $("tr:contains('tavi')");
-        elements.each(function(index, element) {
-          element.style.display = "none";
-        });
-      }
-    },
-    1000);
-});
-
-lastHash = "";
-var timeout = null;
-document.addEventListener("DOMSubtreeModified", function() {
-  if(timeout) {
-    clearTimeout(timeout);
-  }
-  timeout = setTimeout(listener, 100);
-}, false);
+waitFunction()
